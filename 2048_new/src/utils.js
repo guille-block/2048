@@ -41,4 +41,3 @@ export const getColors = (num) => {
       return "#C2B3A3";
   }
 };
-j
