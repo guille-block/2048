@@ -5,7 +5,8 @@ import cloneDeep from 'lodash.clonedeep'
 
 const GameOver = ({tabla}) => {
       let dataIterable = {...tabla}
-      let newArray = cloneDeep({tabla});
+      //let newArray = cloneDeep({tabla});
+      let finalJuego = 0
 
       //const mapArray = Object.values()
       
@@ -25,14 +26,17 @@ const GameOver = ({tabla}) => {
         }
         console.log(suma)
       if(suma === 16) {
-          /*let finPartida
           for(let i = 0; i < 4; i++) {
-            for(let j = 0; j < 3; j++) {
-                finPartida = dataIterable[i][j] !== dataIterable[i][j+1] ? finPartida +1 : finPartida
+            for(let j = 0; j < 3; j++) { 
+                const resultado1 = (dataIterable[i][j] !== dataIterable[i][j+1]) ? 0 : 1
+                const resultado2 = (dataIterable[j][i] !== dataIterable[j+1][i]) ? 0 : 1
+                const resultado = resultado1 + resultado2
+                finalJuego += resultado
                 }
-            }*/
-
+            }
+         if(finalJuego === 0) {
             return (<h1>Perdiste! Perdiste! No hay nadie peor que vos!</h1>)
+         }
         }
         return (<h1>Dale que podes ganar!</h1>)
 

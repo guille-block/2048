@@ -22,9 +22,12 @@ function App() {
 
   const [dataVieja, setDataVieja] = useState([]);
 
+  const [sendRequest, setSendRequest] = useState(false)
+
 //Initialize
 const initialize = () => {
   let newGrid = cloneDeep(data)
+  console.log(newGrid)
   
   addNumber(newGrid)
   //console.log(newGrid)
@@ -35,6 +38,8 @@ const initialize = () => {
   setData(newGrid)
   
 }
+
+
 //console.log(dataVieja)
 //console.log(data)
 
@@ -195,7 +200,7 @@ const swipeDown = (dummy) => {
 };
 
 //console.log(dataVieja)
-console.log(data)
+
 
 const swipeUp = (dummy) => {
     console.log("swipe up");
@@ -264,16 +269,31 @@ const handleKeyDown = (event) => {
 
 //Check game over
 
+
 useEffect(() => {
+
   initialize()
-}, [])
+}, 
+[])
+/*
+if(sendRequest){
+  //send the request
+  setData([
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
+  ])
+  setSendRequest(false);
+}*/
 
 useEvent('keydown', handleKeyDown)
 
 return(
-  <div>
+  <div className='div-main'>
     <GameOver tabla = {data}/>
-    <div className= 'fondo'>
+    <button className= 'button-new' >Reiniciar</button>
+    <div className= 'fondo'>     
       {data.map((row, oneIndex) => (
           <div style= {{ display: "flex" }} key = {oneIndex}>
             {row.map((digit, index) => (
