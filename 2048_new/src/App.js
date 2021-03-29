@@ -266,8 +266,19 @@ const handleKeyDown = (event) => {
   }
 }
 
+//Reiniciar 
+const reiniciar = () => {
+  const emptyArray = [
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
+  ]
 
-//Check game over
+  addNumber(emptyArray)
+  addNumber(emptyArray)
+  setData(emptyArray)
+}
 
 
 useEffect(() => {
@@ -275,24 +286,13 @@ useEffect(() => {
   initialize()
 }, 
 [])
-/*
-if(sendRequest){
-  //send the request
-  setData([
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]
-  ])
-  setSendRequest(false);
-}*/
 
 useEvent('keydown', handleKeyDown)
 
 return(
   <div className='div-main'>
     <GameOver tabla = {data}/>
-    <button className= 'button-new' >Reiniciar</button>
+    <button className= 'button-new' onClick={() => reiniciar()}>Reiniciar</button>
     <div className= 'fondo'>     
       {data.map((row, oneIndex) => (
           <div style= {{ display: "flex" }} key = {oneIndex}>
